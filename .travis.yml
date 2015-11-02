@@ -16,7 +16,7 @@ script:
   - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doctec.html srcdoc/doctec.txt
   - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/docuti.html srcdoc/docuti.txt
 
-
+  - touch test.test
 
   - javadoc -charset "utf-8" -d "./doc" -sourcepath "./src" -subpackages Controller Utilitaires Model View Test
 
