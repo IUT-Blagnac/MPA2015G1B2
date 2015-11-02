@@ -25,7 +25,7 @@ script:
   - jar -cfm ../OPTI.jar ../data/MANIFEST.MF View Model Utilitaires Controller
   
   - cd ..
-  - for c in $(cat data/sourcesC.txt) ; do java -cp .:../junit.jar bin/Test/${c%.*} ; done
+  - for c in $(cat data/sourcesC.txt) ; do java -cp .:../junit.jar bin/Test.${c%.*} ; done
   - cd ../OPTIweb/test
   - casperjs test casperEtudiants.js
   - cd ../..
