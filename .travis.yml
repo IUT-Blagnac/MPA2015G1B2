@@ -7,7 +7,6 @@ language: java
 script:
   - cd sprint_5
   
-  - find . -iname *.java > data/sources.txt
   - javac -d ./bin -cp .;../junit.jar @data/sources.txt
 
 
@@ -24,15 +23,10 @@ script:
 
   - cd bin
   - jar -cfm ../OPTI.jar ../data/Manifest.mf View Model Utilitaires Controller
-  - cd ..
-
-
-
 
   - cd bin/Test
-  - find . -iname *.class > ../sources.txt
   - cd ..
-  - for /F "tokens=*" %%V in (sources.txt) do "%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
+  - for /F "tokens=*" %%V in (sourcesC.txt) do "%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
   - cd ../OPTIweb/test
   - casperjs test casperEtudiants.js
   - cd ../..
