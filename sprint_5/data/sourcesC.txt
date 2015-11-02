@@ -1,0 +1,6 @@
+projectControllerTest.class
+SubjectControllerTest.class
+StudentControllerTest.class
+IntervenantControllerTest.class
+CustomControllerTest.class
+CSVTest.class
