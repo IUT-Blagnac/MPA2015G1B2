@@ -37,10 +37,7 @@ script:
   - cd bin/Test
   - dir /B *.class > ../sources.txt
   - cd ..
-  - for /F "tokens=*" %%V in (sources.txt) do (
-
-"%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
-)
+  - for /F "tokens=*" %%V in (sources.txt) do "%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
   - cd ../OPTIweb/test
   - casperjs test casperEtudiants.js
   - cd ../..
