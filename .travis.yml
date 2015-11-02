@@ -12,7 +12,7 @@ script:
 
   - java -jar ../plantuml.jar -Tpng -o src/images srcdoc/classes.puml
 
-  - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doc.html srcdoc/%doc.txt
+  - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doc.html srcdoc/doc.txt
   - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doctec.html srcdoc/doctec.txt
   - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/docuti.html srcdoc/docuti.txt
 
