@@ -30,7 +30,7 @@ script:
 
 
   - cd bin/Test
-  -find . -iname *.class > ../sources.txt
+  - find . -iname *.class > ../sources.txt
   - cd ..
   - for /F "tokens=*" %%V in (sources.txt) do "%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
   - cd ../OPTIweb/test
