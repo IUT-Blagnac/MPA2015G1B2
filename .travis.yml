@@ -22,7 +22,7 @@ script:
 
 
   - cd bin
-  - jar -cfm ../OPTI.jar ../data/Manifest.mf View Model Utilitaires Controller
+  - jar -cfm ../OPTI.jar ../data/MANIFEST.MF View Model Utilitaires Controller
 
   - cd bin/Test
   - cd ..
