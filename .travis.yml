@@ -7,7 +7,7 @@ language: java
 script:
   - cd sprint_5
   
-  - dir /s /B *.java > data/sources.txt
+  - find . -iname *.java > data/sources.txt
   - javac -d bin -cp .;../junit.jar @data/sources.txt
 
 
@@ -30,7 +30,7 @@ script:
 
 
   - cd bin/Test
-  - dir /B *.class > ../sources.txt
+  -find . -iname *.class > ../sources.txt
   - cd ..
   - for /F "tokens=*" %%V in (sources.txt) do "%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
   - cd ../OPTIweb/test
