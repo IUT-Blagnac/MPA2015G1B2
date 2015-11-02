@@ -1,0 +1,21 @@
+== Product Blacklog
+
+[options="header", cols="10,^2"]
+|=============================================================================
+|Features | Status
+|0. Infrastructure set up | OK
+|1.a. Create/Delete/Modify a subject | OK
+|1.b. List subjects with filters| NOK
+|2.a. Define students groups| OK
+|2.b. Match students with groups | OK
+|2.c. Define group's wishes | OK
+|3.a. Define (allocation) a subject for a group | WIP
+|3.b. List wishes number by rank for a subject | WIP
+|3.c. List for a group the number of "participants" by wishes rank | NOK
+|3.d. List assigned / not assigned subjects | WIP
+|4.b. List projects by contributor | NOK
+|3.e. List assigned / not assigned groups | NOK
+|4.a. Define contributors of a tutored project | OK
+|4.c. List contributors by project | NOK
+|[Optionnal] Add an admin authentification | OK
+|=============================================================================

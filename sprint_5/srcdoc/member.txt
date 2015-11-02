@@ -1,0 +1,31 @@
+= Documentation SPRINT4
+:Author:  Project group 1B2
+:doctitle: Documentation of OPTI project
+:slideshowlocation: IUT Blagnac
+:copyright: {date={localdate}}, {slideshowlocation} *** {author} *** Powered by AsciiDoc and W3C Slidy &#169; 
+:revnumber: 4
+
+include::docConf.txt[]
+
+image::logo.png[link="logo.png",width="20%"]
+
+Toulouse University 2
+
+IUT Blagnac
+
+DUT IT S3
+
+Unit MPA
+
+Sprint 4
+
+
+
+== Members list of the 1B2 group
+
+- Clément SERRANO
+- Thomas SAUVAGE
+- Matthieu MOTHAY
+- Jean BOUYSSOU
+- Héloïse BADAROUX
+- Alexandre BONTEMS

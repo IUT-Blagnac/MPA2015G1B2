@@ -1,0 +1,32 @@
+include::member.txt[]
+
+include::..\README.txt[]
+
+include::backlog.txt[]
+
+==  Description of the available features
+
+=== Graphic Interface
+- Launch OPTI.jar to open the application
+- In the connection page, use the following logins :
+	Login =	admin		Passwd = admin
+	
+- Close the window
+- Display credits
+- Add/Modify/Remove students
+- Add/Modify/Remove subjects
+- Add/Modify/Remove tutors
+- Add/Modify/Remove groups
+- Display the students' list
+- Display the subjects' list
+- Display the tutors' list
+- Display the groups' list
+- Choose the wishes' subjects
+
+=== Library
+- Read a CSV file
+- Save a CSV file
+
+== Interface Screenshots
+
+include::interface.txt[]

@@ -1,0 +1,11 @@
+include::member.txt[]
+
+include::..\README.txt[]
+
+include::backlog.txt[]
+
+
+
+=== How is it working ?
+
+Execution of the MakeOPTIweb.java permit to create the OPTI application in a Web version.

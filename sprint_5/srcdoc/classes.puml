@@ -1,0 +1,323 @@
+'-----------------------------------
+' UML concepts illustrated
+' JMB 2014
+'-----------------------------------
+@startuml
+'-----------------------------------
+
+package View {
+
+	class JFrame {
+	}
+	class JPanel {
+	}
+	
+	abstract class CustomPanel {
+		#DefaultTableModel model
+		#JTable tableau
+		#ArrayList<Modelisable> array
+		#JButton add
+		#JButton remove
+		#JButton save
+		#JPanel pantab
+		#JPanel panbut
+		#String[] title
+		#String file
+		#JFrame frame
+		#boolean finished
+		+CustomPanel()
+		#Modelisable getT(String[] args)
+		#Modelisable getT(String arg)
+		+CustomPanel(JFrame frame, String file, String[] title)
+		+void main(String[] args)
+	}
+	
+	JPanel <|-- CustomPanel
+	class PanelIntervenant {
+		+String file
+		+PanelIntervenant(JFrame frame)
+		#Modelisable getT(String[] args)
+		#Modelisable getT(String arg)
+		+void main(String[] args)
+	}
+	CustomPanel<|-- PanelIntervenant
+	class PanelStudent {
+		+String file
+		+PanelStudent(JFrame frame)
+		#Modelisable getT(String[] args)
+		+void main(String[] args)
+		#Modelisable getT(String arg)
+	}
+	CustomPanel<|-- PanelStudent
+	class PanelSubject {
+		+PanelSubject(JFrame frame)
+		#Modelisable getT(String[] args)
+		+void main(String[] args)
+		#Modelisable getT(String arg)
+	}
+	CustomPanel<|-- PanelGroup
+	class PanelGroup {
+		+PanelGroup(JFrame frame)
+		#Modelisable getT(String[] args)
+		+void main(String[] args)
+		#Modelisable getT(String arg)
+	}
+	JFrame<|-- WishesPopUp
+	class WishesPopUp {
+		+WishesPopUp(JTable table)
+		+void main(String[] args)
+	}
+	CustomPanel<|-- PanelSubject
+	class Home {
+		-JTabbedPane tabbedPane
+		-String text
+		-JTextPane textPane
+		-JPanel page1
+		-JPanel page2
+		-JPanel pageSubjects
+		-JPanel pageStudents
+		-JPanel pageProjects
+		-JPanel pageTutors
+		-JPanel topPanel
+		-JButton exit
+		+Home()
+		-void createUI()
+		+void main(String[] args)
+	}
+	JFrame <|-- Home
+	
+	class AddGroupPopUp {
+		-AddGroupPopUp instance
+		-StudentController controller
+		-AddGroupPopUp()
+		+AddGroupPopUp getInstance()
+		+void setController(StudentController c)
+	}
+	JFrame <|-- AddGroupPopUp
+	
+	class HomePage {
+		-JButton exit
+		-JTextField loginField
+		-JPasswordField passField
+		-JButton submit
+		-JPanel upperPanel
+		-JPanel littlePanel
+		-JPanel lowerPanel
+		-JPanel mediumPanel
+		-JLabel notifLabel
+		-ResetField resetListener
+		~AuthentificationController controller
+		+HomePage(AuthentificationController controller)
+		-void createUI()
+	}
+	JPanel <|-- HomePage
+	
+	class PanelWish {
+		+PanelWish(JFrame frame, PanelController controller)
+	}
+	CustomPanel <|-- PanelWish
+	
+	class ProjectPopUp {
+		~GroupController groupController
+		~SubjectController subjectController
+		~IntervenantController intervenantController
+		+ProjectPopUp(PanelController[] pan)
+	}
+	JFrame <|-- ProjectPopUp
+	
+}
+
+package Utils{
+class CSV {
+		-String separator
+		+ArrayList<String[]> read(String filepath)
+		+void write(ArrayList<String[]> data, String filepath)
+		+void writeLine(String[] entryToWrite, String filepath)
+		+boolean deleteById(String idToRemove, String filepath)
+	}
+}
+
+package Control{
+class SubjectController {
+	+SubjectController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+PanelController <|-- SubjectController
+
+class IntervenantController {
+	+IntervenantController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+PanelController <|-- IntervenantController
+
+class Main {
+	+{static}JFrame frame
+	+{static}void main(String[] args)
+}
+
+PanelController <|-- GroupController
+
+class GroupController {
+	+GroupController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+PanelController <|-- WishController
+
+class WishController {
+	+WishController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+abstract class PanelController {
+	#String filepath
+	#ArrayList<Modelisable> data
+	#CustomPanel panel
+	+PanelController(String filepath)
+	#{abstract}void buildData()
+	+void saveData()
+	+ArrayList<Modelisable> getData()
+	+void addData(Modelisable modelisable)
+	+void removeByIndex(int index)
+	+void updateByIndex(int index, int column, String change)
+	+{abstract}void addDataById(String id)
+}
+
+class ProjectController {
+	+ProjectController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+PanelController <|-- ProjectController
+
+class StudentController {
+	+StudentController()
+	#void buildData()
+	+void addDataById(String id)
+}
+
+PanelController <|-- StudentController
+	
+	class AuthentificationController {
+		+AuthentificationController()
+		+String toHex(String arg)
+		+String getRights(String input)
+	}
+
+}
+
+
+
+
+package Model {
+
+	class Project {
+	-String id
+	-String group
+	-String sujet
+	-String superviseur
+	-String support
+	-String client
+	+Project(String id, String group, String sujet, String client, String superviseur, String support)
+	+Object[] toArray()
+	+String[] toStringArray()
+	+void set(int i, String change)
+	+String toCSV()
+}
+Modelisable <|-- Project
+
+	class Intervenant {
+	-String nom
+	-String prenom
+	-String id
+	+String toString()
+	+Object[] toArray()
+	+String[] toStringArray()
+	+Intervenant(String id, String prenom, String nom)
+	+void set(int i, String change)
+	+String toCSV()
+}
+
+Modelisable <|-- Intervenant
+	
+
+	abstract class Modelisable {
+		+Modelisable()
+		+Object[] toArray()
+		+Object[] toStringArray()
+		+void set(int i, String change)
+	}
+	class Student {
+	-String nom
+	-String prenom
+	-String id
+	-String group
+	+String toString()
+	+Object[] toArray()
+	+String[] toStringArray()
+	+Student(String group, String id, String nom, String prenom)
+	+void set(int i, String change)
+	+String toCSV()
+}
+
+	Modelisable <|-- Student
+	class Subject {
+	-String id
+	-String nom
+	-String titre
+	+Subject(String pId, String pNom, String pTitre)
+	+Object[] toArray()
+	+String[] toStringArray()
+	+void set(int i, String change)
+	+String toCSV()
+}
+
+	Modelisable <|-- Wish
+	
+		class Wish {
+		-String id
+		-String nom
+		-String titre
+		-String voeu
+		+String toString()
+		+Object[] toArray()
+		+String[] toStringArray()
+		+Wish(String pId, String pNom, String pTitre, String pVoeu)
+		+void set(int i, String change)
+		+String toCSV()
+	}
+	
+	Modelisable <|-- Group
+	
+		class Group {
+		-String groupId
+		-String attributedSubject
+		+String toString()
+		+Object[] toArray()
+		+String[] toStringArray()
+		+Group(String groupId)
+		+void set(int i, String change)
+		+String toCSV()
+	}
+
+	Modelisable <|-- Subject
+
+}
+CustomPanel -> PanelController
+PanelController -> CSV
+PanelController -> Modelisable
+Main -> PanelController
+Main -> Home
+Home -> CustomPanel
+
+
+'-----------------------------------
+@enduml
+'-----------------------------------

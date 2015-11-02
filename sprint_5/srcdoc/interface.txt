@@ -1,0 +1,50 @@
+- Enter your credentials to log into the app
+
+image::quitter.png[link="quitter.png",width="50%"]
+
+- When you are successfully logged in, you can use the application through the different tabs
+
+image::admin.png[link="admin.png",width="50%"]
+
+- Click on the tab "About" display the "Credits"
+
+image::apropos.png[link="apropos.png",width="50%"]
+
+- Click on the subjects tab
+
+image::subjects.png[link="subjects.png",width="50%"]
+
+-Add a subject and complete the different fields
+
+image::add.png[link="add.png",width="50%"]
+image::addcomplete.png[link="addcomplete.png",width="50%"]
+
+-Remove one or several records
+
+image::removebefore.png[link="removebefore.png",width="50%"]
+image::removebefore.png[link="removeduring.png",width="50%"]
+image::removeafter.png[link="removeafter.png",width="50%"]
+
+-Save the modifications in the CSV file
+
+image::save.png[link="save.png",width="50%"]
+image::save2.png[link="save2.png",width="50%"]
+
+-These features works with the tutors, groups and students tabs too
+
+image::students.png[link="students.png",width="50%"]
+image::tutors.png[link="tutors.png",width="50%"]
+image::group.png[link="group.png",width="50%"]
+
+-In the group tab, double click on the field to choose the wishes order
+
+image::PopUp.png[link="PopUp.png",width="50%"]
+
+-Then click to save for create a new CSV file
+
+image::PopUpSave.png[link="PopUpSave.png",width="50%"]
+
+- Click on the "Assign students to group", this will open a window that shows the list of students who are not assign to a group yet
+	Select students on this list, then enter a group name (already existing or a new one) and click on the "Add to group button"
+
+image::addgroup.png[link="addgroup.png",width="50%"]
