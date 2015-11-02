@@ -1,20 +1,47 @@
- before_script:
-  - wget https://github.com/n1k0/casperjs/archive/1.0.3.tar.gz -O /tmp/casper.tar.gz
-  - tar -xvf /tmp/casper.tar.gz
-  - export PATH=$PATH:$PWD/casperjs-1.0.3/bin/
+before_install:
+  - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/junit.jar
+  - "sudo apt-get install graphviz 2>&1 | tail -n 2"
+  - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/plantuml.jar
+  - hg clone -r 8.6.7 https://asciidoc.googlecode.com/hg/ asciidoc-8.6.7
 language: java
 script:
-  - java -version
-  - javac -version
-  - python -V
-  - phantomjs -v
-  - python asciidoc-8.6.7/asciidoc.py --version
-  - dot -V
-  - echo Hello from DUT INFO Blagnac
-  - ls -alF
   - cd sprint_5
   - javac -cp .:./bin -d ./bin ./src/HelloMonde.java
   - javac -cp .:./bin:../junit.jar -d ./bin ./src/HelloMondeTest.java
   - java -jar ../plantuml.jar -Tpng -o srcdoc/images srcdoc/diag0.puml
   - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o srcdoc/presentationFinale.html srcdoc/presentationFinale.txt
   - ls -alF srcdoc
+  
+  - dir /s /B *.java > data/sources.txt
+  - javac -d bin -cp .;../junit.jar @data/sources.txt
+
+
+  - java -jar ../plantuml.jar -Tpng -o src/images srcdoc/classes.puml
+
+  - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doc.html srcdoc/%doc.txt
+  - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/doctec.html srcdoc/doctec.txt
+  - python ../asciidoc-8.6.7/asciidoc.py -a source-highlighter=pygments -o srcdoc/docuti.html srcdoc/docuti.txt
+
+
+
+  - javadoc -charset "utf-8" -d "./doc" -sourcepath "./src" -subpackages Controller Utilitaires Model View Test
+
+
+  - cd bin
+  - jar -cfm ../OPTI.jar ../data/Manifest.mf View Model Utilitaires Controller
+  - cd ..
+
+
+
+
+  - cd bin/Test
+  - dir /B *.class > ../sources.txt
+  - cd ..
+  - for /F "tokens=*" %%V in (sources.txt) do (
+
+"%JAVA_HOME%\bin\java" -cp .;../tools/junit.jar Test/%%~nV
+)
+  - cd ../OPTIweb/test
+  - casperjs test casperEtudiants.js
+  - cd ../..
+
