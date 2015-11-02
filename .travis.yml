@@ -7,7 +7,7 @@ language: java
 script:
   - cd sprint_5
   
-  - javac -d ./bin -cp .;../junit.jar @data/sources.txt
+  - javac -d ./bin -cp .:../junit.jar @data/sources.txt
 
 
   - java -jar ../plantuml.jar -Tpng -o src/images srcdoc/classes.puml
